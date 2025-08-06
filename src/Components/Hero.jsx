@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+    const navigate = useNavigate();
+
   return (
     <section className="bg-gradient-to-r from-pink-50 to-pink-100 min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row mx-auto items-center justify-between px-6 gap-12 w-full">
@@ -19,7 +22,7 @@ export default function Hero() {
             blended to bring your hair unmatched shine, softness, and strength.
             Tulip Shampoo is your everyday secret for radiant, healthy hair.
           </p>
-          <button className="bg-pink-600 text-white px-10 py-4 rounded-full shadow-lg hover:bg-pink-700 transition transform hover:scale-105 text-lg">
+          <button  onClick={() => navigate("/product/tulip-shampoo")} className="bg-pink-600 text-white px-10 py-4 rounded-full shadow-lg hover:bg-pink-700 transition transform hover:scale-105 text-lg">
             Buy Now
           </button>
         </motion.div>
