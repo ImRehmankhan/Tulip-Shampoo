@@ -11,7 +11,7 @@ export default function Products() {
   return (
     <section className="py-16 bg-pink-50" id="Products">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-pink-700 mb-8">Our Variants</h2>
+        <h2 className="text-3xl font-bold text-pink-700 mb-8 text-center">Our Variants</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {products.map((p) => (
             <div key={p.id} className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition flex flex-col">
