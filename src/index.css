@@ -6,3 +6,28 @@
 
 
 
+/* Force slick slides to be flex containers */
+.slide-center {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+/* Default for desktop — no change */
+.ant-table {
+  width: 100%;
+}
+
+/* For mobile screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .ant-table {
+    width: 95% !important; /* make table smaller */
+    margin: 0 auto; /* center it */
+  }
+  
+  /* Optional: make columns shrink too */
+  .ant-table th,
+  .ant-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}

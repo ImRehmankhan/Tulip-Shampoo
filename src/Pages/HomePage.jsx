@@ -8,6 +8,7 @@ import Testimonials from '../Components/Testimonials'
 import Purchase from '../Components/Purchase'
 import Contact from '../Components/Contact'
 import Header from '../Components/Header'
+import Products from '../Components/Products'
 
 function HomePage() {
 
@@ -17,7 +18,9 @@ function HomePage() {
      <Hero/>
      <Benefits/>
      <Ingredients/>
+     <Products/>
      <BeforeAfter/>
+
      <Testimonials/>
      <Purchase/>
      <Contact/>
