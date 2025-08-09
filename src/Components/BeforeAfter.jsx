@@ -6,14 +6,14 @@ export default function BeforeAfter() {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <img
-              src="https://olaplex.com/cdn/shop/files/5-N4C_EmiBA_1440_eea40da9-5cac-4920-8001-2011f39794d5.jpg?v=1741615977&width=1441"
+            src="https://halalveda.uk/cdn/shop/files/Copy_of_Copy_of_before.png?v=1745356236&width=823"
               alt="Before using Tulip Shampoo"
               className="rounded-lg shadow-lg object-cover w-full h-full"
             />
           </div>
           <div>
             <img
-              src="https://www.instyle.com/thmb/grStGlDIj9TnNIlv_2dpPH6CQlI%3D/fit-in/1500x1125/filters%3Ano_upscale%28%29%3Amax_bytes%28150000%29%3Astrip_icc%28%29/ins-pattern-hydration-shampoo-before-after-mia-rinaldi-2-8f57f532a3ea4da6ab003e87e6132041.jpeg"
+              src="https://halalveda.uk/cdn/shop/files/Copy_of_before.png?v=1745356236&width=823"
               alt="After using Tulip Shampoo"
               className="rounded-lg shadow-lg object-cover w-full h-full"
             />

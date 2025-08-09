@@ -1,33 +1,37 @@
 // ProductHero.jsx
 import React, { useContext, useState } from "react";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import img1 from "../assets/100.jpg";
+import img2 from "../assets/1001.jpg";
+import img3 from "../assets/1002.jpg";
+import ProductDescription from "./ProductDesc";
 
 export default function ProductHero() {
   const navigate = useNavigate();
 
+
   const product = {
-    name: "Tulip Shampoo — 250ml (Rose)",
+    name: "Herbal Organic – Anti Dandruff | Control Hair Fall | 200ml",
     price: 1200,
-    salePrice: 900,
+    salePrice: 999.00,
     rating: 4.9,
     reviews: 1960,
     sizeOptions: ["125ml", "250ml"],
     features: [
-      "Stops hair fall within a week",
-      "Grows new hair within 6 weeks",
-      "Reverse hard water damages",
-      "Safe for babies, men & women",
-      "Stops dandruff & eczema flare-up",
+      "Nourish your hair, naturally.",
+      "Soft, shiny, and strong.",
+      "Hydrate your locks.",
+      "Healthy hair, happy life.",
+      "Shine on with our formula.",
     ],
     images: [
-      "https://halalveda.uk/cdn/shop/files/Yourparagraphtext.png?v=1747512182&width=823",
-      "https://halalveda.uk/cdn/shop/files/Copy_of_New_Product_1.png?v=1745356236&width=823",
+      img1,
+      img2,
+      img3,
       "https://halalveda.uk/cdn/shop/files/before.png?v=1745356236&width=823",
       "https://halalveda.uk/cdn/shop/files/Copy_of_Copy_of_before.png?v=1745356236&width=823",
-      "https://halalveda.uk/cdn/shop/files/Copy_of_before.png?v=1745356236&width=823"
-
-
+      "https://halalveda.uk/cdn/shop/files/Copy_of_before.png?v=1745356236&width=823",
     ],
     bundles: [
       {
@@ -137,7 +141,7 @@ export default function ProductHero() {
           {/* RIGHT - Product Info */}
           <div className="pt-1">
             {/* Title */}
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
               {product.name}
             </h1>
 
@@ -293,22 +297,18 @@ export default function ProductHero() {
             <div className="mt-6 flex flex-wrap gap-8 text-xs text-gray-700">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-gray-200" />
-                100% Ayurvedic
+                100% Herbal Formula
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-gray-200" />
-                100% Halal
+                Herbaceous Scent
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-gray-200" />
-                Chemical Free
+                Reduces Hair Fall
               </div>
             </div>
-
-            <p className="mt-4 text-sm text-gray-600">
-              Try Risk Free For 30 Days. You're 100% covered — if it's not for
-              you, send it back within 30 days for a quick, no-hassle refund.
-            </p>
+            
           </div>
         </div>
       </div>

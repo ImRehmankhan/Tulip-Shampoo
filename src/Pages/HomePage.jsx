@@ -14,15 +14,14 @@ function HomePage() {
 
   return (
     <>
-     <Header />
-     <Hero/>
+     <Purchase/>
+     
      <Benefits/>
      <Ingredients/>
      <Products/>
      <BeforeAfter/>
-
      <Testimonials/>
-     <Purchase/>
+     <Hero/>
      <Contact/>
     </>
   )

@@ -1,6 +1,6 @@
 // Header.jsx
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 import {
   FaSearch,
@@ -12,8 +12,7 @@ import {
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-    const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   return (
     <header className="bg-white shadow-sm  top-0 z-50">
@@ -39,15 +38,15 @@ export default function Header() {
         <div>
           <nav className="border-t border-gray-200 hidden sm:block">
             <div className="max-w-7xl mx-auto flex justify-center gap-6 py-2 text-sm font-medium text-gray-700">
-              <a href="#" className="hover:text-pink-600">
+              <Link to="/home" className="hover:text-pink-600">
                 Home
-              </a>
-              <a href="#" className="hover:text-pink-600">
+              </Link>
+              <Link to="/products" className="hover:text-pink-600">
                 Products
-              </a>
-              <a href="#contact" className="hover:text-pink-600">
+              </Link>
+              <Link to="/Contact" className="hover:text-pink-600">
                 Contact
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
@@ -74,25 +73,25 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-      <div className="sm:hidden border-t border-gray-200 bg-white shadow-md">
-            <div className="flex flex-col items-center justify-center  gap-4 px-4 py-4 text-gray-700 text-sm font-medium">
-              <a href="#" className="hover:text-pink-600">
+        <div className="sm:hidden border-t border-gray-200 bg-white shadow-md">
+          <div className="flex flex-col items-center justify-center  gap-4 px-4 py-4 text-gray-700 text-sm font-medium">
+            <Link to="/home" className="hover:text-pink-600">
                 Home
-              </a>
-              <a href="#" className="hover:text-pink-600">
+              </Link>
+              <Link to="/products" className="hover:text-pink-600">
                 Products
-              </a>
-              <a href="#contact" className="hover:text-pink-600">
+              </Link>
+              <Link to="/Contact" className="hover:text-pink-600">
                 Contact
-              </a>
-              <button
-                onClick={() => navigate("/product/tulip-shampoo")}
-                className="bg-pink-600 text-white px-10 py-4 rounded-full shadow-lg hover:bg-pink-700 transition transform hover:scale-105 text-lg"
-              >
-                Buy Now
-              </button>
-            </div>
+              </Link>
+            <button
+              onClick={() => navigate("/product/tulip-shampoo")}
+              className="bg-pink-600 text-white px-10 py-4 rounded-full shadow-lg hover:bg-pink-700 transition transform hover:scale-105 text-lg"
+            >
+              Buy Now
+            </button>
           </div>
+        </div>
       )}
     </header>
   );

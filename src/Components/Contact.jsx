@@ -28,13 +28,13 @@ export default function Contact() {
               <p className="text-gray-700 flex items-center gap-3">
                 <FaPhoneAlt className="text-pink-600 text-xl" />
                 <span>
-                  <span className="font-semibold">Phone:</span> +92 300 1234567
+                  <span className="font-semibold">Phone:</span> +923409611631
                 </span>
               </p>
               <p className="text-gray-700 flex items-center gap-3">
                 <FaMapMarkerAlt className="text-pink-600 text-xl" />
                 <span>
-                  <span className="font-semibold">Address:</span> 123 Tulip Street, Lahore, Pakistan
+                  <span className="font-semibold">Address:</span> 123 Tulip Street, Islamabad, Pakistan
                 </span>
               </p>
             </div>

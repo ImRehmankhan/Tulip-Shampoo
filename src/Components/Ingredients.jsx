@@ -25,21 +25,38 @@ export default function Ingredients() {
   return (
     <section className="py-16 bg-pink-50" id="ingredients">
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-pink-700 mb-8">Key Ingredients</h2>
-        <div className="grid md:grid-cols-4 gap-6">
+        {/* Heading */}
+        <h2 className="text-3xl font-bold text-pink-700 mb-4">
+          Key Ingredients
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
+          Crafted with nature’s finest elements to nourish, strengthen, and
+          protect your hair while leaving it soft, shiny, and full of life.
+        </p>
+
+        {/* Ingredient Cards */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
           {ingredients.map((ing, i) => (
             <div
               key={i}
-              className="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg hover:scale-105 transition flex flex-col"
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 duration-300"
             >
-              <img
-                src={`${ing.img}?auto=format&fit=crop&w=400&q=80`}
-                alt={ing.name}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4 flex flex-col flex-grow">
-                <h3 className="text-lg font-semibold text-pink-700 mb-2">{ing.name}</h3>
-                <p className="text-gray-600 text-sm flex-grow">{ing.desc}</p>
+              {/* Image */}
+              <div className="overflow-hidden rounded-t-xl">
+                <img
+                  src={`${ing.img}?auto=format&fit=crop&w=600&q=80`}
+                  alt={ing.name}
+                  className="w-full h-48 object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-pink-700 mb-1">
+                  {ing.name}
+                </h3>
+                <div className="w-12 h-1 bg-pink-300 mx-auto mb-3 rounded-full"></div>
+                <p className="text-gray-600 text-sm">{ing.desc}</p>
               </div>
             </div>
           ))}

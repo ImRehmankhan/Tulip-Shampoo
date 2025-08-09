@@ -1,6 +1,7 @@
 // src/components/CheckoutPage.jsx
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import img1 from "../assets/100.jpg";
 
 export default function CheckoutPage() {
   const location = useLocation();
@@ -46,7 +47,7 @@ export default function CheckoutPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const phoneNumber = "923425221720";
+    const phoneNumber = "923409611631";
     const message = `📦 New Order
 -------------------
 🛍 Product: ${buyitemdetails.itemname}
@@ -70,7 +71,7 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-white text-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <header className="mb-6 border-b pb-4">
-          <h1 className="text-xl sm:text-2xl font-bold text-pink-700">
+          <h1 className="text-xl text-center sm:text-2xl font-bold text-pink-700">
             TulipShampoo.PK
           </h1>
         </header>
@@ -80,7 +81,7 @@ export default function CheckoutPage() {
             <div className="sticky top-6 bg-gray-50 border border-gray-100 rounded-md p-5">
               <div className="flex items-start gap-3 mb-4">
                 <img
-                  src="https://halalveda.uk/cdn/shop/files/Yourparagraphtext.png?v=1747512182&width=823"
+                  src={img1}
                   alt="product"
                   className="w-16 h-16 rounded-md object-cover"
                 />
@@ -92,7 +93,7 @@ export default function CheckoutPage() {
                     Qty: {buyitemdetails.selectedBundle.qty}
                   </div>
                 </div>
-                <div className="text-sm font-semibold">Rs 999.0</div>
+                <div className="text-sm font-semibold">Rs 999.00</div>
               </div>
 
               {/* <div className="flex items-center gap-3 mb-4">
