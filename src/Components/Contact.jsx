@@ -22,19 +22,19 @@ export default function Contact() {
               <p className="text-gray-700 flex items-center gap-3">
                 <FaEnvelope className="text-pink-600 text-xl" />
                 <span>
-                  <span className="font-semibold">Email:</span> support@tulipshampoo.com
+                  <span className="font-semibold">Email:</span> malicmoiz655@gmail.com
                 </span>
               </p>
               <p className="text-gray-700 flex items-center gap-3">
                 <FaPhoneAlt className="text-pink-600 text-xl" />
                 <span>
-                  <span className="font-semibold">Phone:</span> +923409611631
+                  <span className="font-semibold">Phone:</span> +923185846471
                 </span>
               </p>
               <p className="text-gray-700 flex items-center gap-3">
                 <FaMapMarkerAlt className="text-pink-600 text-xl" />
                 <span>
-                  <span className="font-semibold">Address:</span> 123 Tulip Street, Islamabad, Pakistan
+                  <span className="font-semibold">Address:</span>Islamabad, Pakistan.
                 </span>
               </p>
             </div>

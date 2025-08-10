@@ -9,11 +9,13 @@ import Purchase from '../Components/Purchase'
 import Contact from '../Components/Contact'
 import Header from '../Components/Header'
 import Products from '../Components/Products'
+import FullScreenVideo from '../Components/FullScreenVideo'
 
 function HomePage() {
 
   return (
     <>
+   
      <Purchase/>
      
      <Benefits/>

@@ -2,7 +2,7 @@ export default function Ingredients() {
   const ingredients = [
     {
       name: "Aloe Vera",
-      img: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2",
+      img: "https://cdn.shopify.com/s/files/1/0691/8363/5772/files/Aloe_Vera_Plant2_1_600x600.jpg?v=1740762354",
       desc: "Deeply hydrates and soothes the scalp while promoting healthy hair growth."
     },
     {
@@ -17,7 +17,7 @@ export default function Ingredients() {
     },
     {
       name: "Vitamin E",
-      img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f",
+      img: "https://c8.alamy.com/comp/M7WJ7B/vitamin-e-rich-food-top-view-healthy-food-concept-M7WJ7B.jpg",
       desc: "Protects hair from environmental damage and strengthens hair strands."
     }
   ];
