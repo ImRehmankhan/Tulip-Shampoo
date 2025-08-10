@@ -45,7 +45,7 @@ export default function Purchase() {
           </ul>
 
           {/* Call to Action */}
-          <button  onClick={() => navigate("/")} className="bg-pink-600 text-white px-12 py-4 rounded-full shadow-lg hover:bg-pink-700 hover:shadow-xl transition transform hover:scale-105 text-lg font-semibold">
+          <button  onClick={() => navigate("/products")} className="bg-pink-600 text-white px-12 py-4 rounded-full shadow-lg hover:bg-pink-700 hover:shadow-xl transition transform hover:scale-105 text-lg font-semibold">
             Buy Now
           </button>
         </div>

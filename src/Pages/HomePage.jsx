@@ -19,7 +19,7 @@ function HomePage() {
      <Benefits/>
      <Ingredients/>
      <Products/>
-     <BeforeAfter/>
+     {/* <BeforeAfter/> */}
      <Testimonials/>
      <Hero/>
      <Contact/>

@@ -15,16 +15,16 @@ export default function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<ProductPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/home" element={<HomePage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Products />} />
       </Routes>
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/923409611631" // Replace with your number
+        href="https://wa.me/923185846471" // Replace with your number
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50 transition-all duration-300"

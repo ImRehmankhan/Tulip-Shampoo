@@ -1,20 +1,28 @@
 // ProductHero.jsx
 import React, { useContext, useState } from "react";
+
 import { FaCheckCircle, FaStar } from "react-icons/fa";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import img1 from "../assets/100.jpg";
+import img4 from "../assets/1003.jpeg";
+
 import img2 from "../assets/1001.jpg";
 import img3 from "../assets/1002.jpg";
 import ProductDescription from "./ProductDesc";
+import { CartContext } from "../context/CartContext";
+import ReturnPolicy from "./ReturnPolicy";
+import DeliveryInformation from "./DeliveryInfo";
 
 export default function ProductHero() {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { products , addToCart} = useContext(CartContext);
+  const newproduct = products.find((p) => p.id === parseInt(id));
 
-
-  const product = {
+  let product = {
     name: "Herbal Organic – Anti Dandruff | Control Hair Fall | 200ml",
     price: 1200,
-    salePrice: 999.00,
+    salePrice: 999.0,
     rating: 4.9,
     reviews: 1960,
     sizeOptions: ["125ml", "250ml"],
@@ -25,79 +33,34 @@ export default function ProductHero() {
       "Healthy hair, happy life.",
       "Shine on with our formula.",
     ],
-    images: [
-      img1,
-      img2,
-      img3,
-      "https://halalveda.uk/cdn/shop/files/before.png?v=1745356236&width=823",
-      "https://halalveda.uk/cdn/shop/files/Copy_of_Copy_of_before.png?v=1745356236&width=823",
-      "https://halalveda.uk/cdn/shop/files/Copy_of_before.png?v=1745356236&width=823",
-    ],
-    bundles: [
-      {
-        id: 1,
-        title: "1 Bottle",
-        price: 999,
-        meta: "Standard sale price",
-        qty: 1,
-      },
-      {
-        id: 2,
-        title: "2 Bottles",
-        price: 1898,
-        meta: "You save additional 5%",
-        qty: 2,
-      },
-      {
-        id: 3,
-        title: "5 Bottles",
-        price: 1994,
-        meta: "Works best together",
-        badge: "BEST SELLING",
-        qty: 5,
-      },
-      {
-        id: 4,
-        title: "10 Bottles",
-        price: 2547,
-        meta: "You save additional 15%",
-        qty: 10,
-      },
-      {
-        id: 5,
-        title: "20 Bottles",
-        price: 3996,
-        meta: "Free shipping",
-        badge: "MAX SAVINGS",
-        qty: 20,
-      },
-      {
-        id: 6,
-        title: "Add Custom Quntity",
-        price: 0,
-        meta: "Standard sale price",
-        badge: null,
-        qty: 0,
-      },
-    ],
+    images: [newproduct.img, img4, img2, img3],
+   
   };
+  if (newproduct) {
+    product = {
+    ...product,
+   
+    name:  `${newproduct.name} – Anti Dandruff | Control Hair Fall | 200ml`,
+    price: newproduct.price,
+    salePrice: newproduct.salePrice,
+  };
+  }
 
   const [selectedImg, setSelectedImg] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(product.sizeOptions[0]);
-  const [selectedBundle, setSelectedBundle] = useState(product.bundles[0].id);
   const [quantity, setQuantity] = useState(1);
 
-  const addToCartfun = () => {
-    const selectedbundel = product.bundles.find((e) => e.id == selectedBundle);
-    if (selectedbundel.title === "Add Custom Quntity") {
-      selectedbundel.qty = quantity;
-      selectedbundel.price = quantity * 999;
-    }
-    const buyitemdetails = {
-      itemname: "Tulip Shampoo — 250ml (Rose)",
-      selectedBundle: selectedbundel,
-    };
-    navigate("/checkout", { state: buyitemdetails });
+
+   const handleAddToCart = () => {
+    let finalQty = quantity;
+    let finalPrice = product.salePrice;
+
+    addToCart({
+      id: newproduct.id,
+      name: product.name,
+      img: newproduct.img,
+      salePrice: product.salePrice,
+      quantity: finalQty,
+    });
   };
 
   return (
@@ -117,7 +80,7 @@ export default function ProductHero() {
             </div>
 
             {/* Thumbnails */}
-            <div className="mt-4 flex gap-3 overflow-x-auto py-2">
+            <div className="mt-4 flex item-center justify-center gap-3 overflow-x-auto py-2">
               {product.images.map((img, i) => (
                 <button
                   key={i}
@@ -204,7 +167,7 @@ export default function ProductHero() {
             </ul>
 
             {/* Bundle options - radio cards */}
-            <div className="mt-6">
+           {/*  <div className="mt-6">
               <div className="text-xs font-semibold text-gray-500 mb-2 uppercase">
                 Bundle & Save
               </div>
@@ -261,6 +224,16 @@ export default function ProductHero() {
                   </label>
                 ))}
               </div>
+            </div> */}
+             <div className="mt-6 flex flex-wrap gap-8 text-xs text-gray-700">
+             <ProductDescription/>
+            </div>
+
+            <div className="mt-0 flex flex-wrap gap-8 text-xs text-gray-700">
+             <DeliveryInformation/>
+            </div>
+            <div className="mt-0 flex flex-wrap gap-8 text-xs text-gray-700">
+             <ReturnPolicy/>
             </div>
 
             {/* Quantity + Add Buttons */}
@@ -285,11 +258,11 @@ export default function ProductHero() {
               </div>
 
               {/* Buy Button */}
-              <button
-                onClick={addToCartfun}
-                className="sm:w-1/2 w-full bg-pink-600 text-white py-3 rounded-full font-semibold shadow-md hover:bg-pink-700 hover:shadow-lg transition-all duration-200"
+               <button
+                onClick={handleAddToCart}
+                className="sm:w-1/2 bg-pink-600 text-white py-3 rounded-full font-semibold"
               >
-                Buy it Now
+                Add to Cart
               </button>
             </div>
 
@@ -308,7 +281,8 @@ export default function ProductHero() {
                 Reduces Hair Fall
               </div>
             </div>
-            
+
+           
           </div>
         </div>
       </div>

@@ -23,14 +23,7 @@ export default function ProductPage() {
     <>
       <ProductHero />
 
-      <section className="bg-white py-10 border-t">
-        <div className="max-w-6xl mx-auto px-4">
-          {/* Header */}
-          <ProductDescription />
-          <DeliveryInformation/>
-          <ReturnPolicy />
-        </div>
-      </section>
+    
       <Products/>
 
       <CustomerReviews />
