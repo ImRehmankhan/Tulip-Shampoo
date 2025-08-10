@@ -80,7 +80,7 @@ export default function ProductHero() {
             </div>
 
             {/* Thumbnails */}
-            <div className="mt-4 flex item-center justify-center gap-3 overflow-x-auto py-2">
+            <div className="mt-4 flex item-center  gap-3 overflow-x-auto py-2">
               {product.images.map((img, i) => (
                 <button
                   key={i}

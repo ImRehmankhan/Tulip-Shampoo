@@ -22,7 +22,7 @@ export default function Purchase() {
             Revitalize your hair with nature’s finest blend of oils, extracts, 
             and botanicals for healthy, shiny, and strong locks.
           </p>
-          <p className="text-3xl font-bold text-pink-600 mb-6">PKR 999.00</p>
+          <p className="text-3xl font-bold text-pink-600 mb-6">PKR 1099.00</p>
 
           {/* Features */}
           <ul className="text-gray-700 mb-8 space-y-3">
