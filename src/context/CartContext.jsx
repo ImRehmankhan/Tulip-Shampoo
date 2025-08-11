@@ -9,42 +9,17 @@ export default function CartProvider({ children }) {
   // Load reviews from localStorage or use default
 
   const [reviewsData, setReviewData] = useState(() => {
-    const saved = localStorage.getItem("reviewsData");
+    const saved = localStorage.getItem("reviews");
     return saved
       ? JSON.parse(saved)
-      : [
-          {
-            name: "Ayesha",
-            date: "06/08/2025",
-            verified: true,
-            text: "I purchased oil and shampoo. Results are amazing. I used oil before shampoo, this combo makes my hair smooth and more shinier. The visible result in hair fall is real.",
-            rating: 5,
-            avatar: null,
-          },
-          {
-            name: "Lubna",
-            date: "03/08/2025",
-            verified: true,
-            text: "I have only used it thrice, feels good! 👍",
-            rating: 5,
-            avatar: null,
-          },
-          {
-            name: "Muzzamil",
-            date: "31/07/2025",
-            verified: true,
-            text: "Good results in less time.",
-            rating: 5,
-            avatar: null,
-          },
-        ];
+      : []
   });
 
   // Sync reviewsData to localStorage
   useEffect(() => {
-    localStorage.setItem("reviewsData", JSON.stringify(reviewsData));
+    localStorage.setItem("reviews", JSON.stringify(reviewsData));
   }, [reviewsData]);
-
+  
   const [cart, setCart] = useState([]);
 
   // Add to cart
@@ -76,8 +51,8 @@ export default function CartProvider({ children }) {
   };
   const products = [
     { id: 1, name: "Tulip Herbal Shampoo – Almond", img: img1, price: 1400.0, salePrice: 1099.0, quantity: 1 },
-    { id: 2, name: "Tulip Herbal Shampoo – Aloe Vera", img: img2, price: 1400.0, salePrice: 1099.0, quantity: 1 },
-    { id: 3, name: "Tulip Herbal Shampoo – Onion", img: img3, price: 1400.0, salePrice: 1099.0, quantity: 1 },
+    { id: 2, name: "Tulip Herbal Shampoo – Aloe Vera", img: img2, price: 1300.0, salePrice: 1039.0, quantity: 1 },
+    { id: 3, name: "Tulip Herbal Shampoo – Onion", img: img3, price: 1300.0, salePrice: 1039.0, quantity: 1 },
   ];
   return (
     <CartContext.Provider

@@ -1,15 +1,12 @@
-import { useState } from 'react'
+import  { useState } from 'react'
 
 import Hero from '../Components/Hero'
 import Benefits from '../Components/Benefits'
 import Ingredients from '../Components/Ingredients'
-import BeforeAfter from '../Components/BeforeAfter'
-import Testimonials from '../Components/Testimonials'
 import Purchase from '../Components/Purchase'
 import Contact from '../Components/Contact'
-import Header from '../Components/Header'
 import Products from '../Components/Products'
-import FullScreenVideo from '../Components/FullScreenVideo'
+import CustomerReviews from '../Components/CustomerReviews'
 
 function HomePage() {
 
@@ -20,10 +17,11 @@ function HomePage() {
      
      <Benefits/>
      <Ingredients/>
+     <Hero/>
      <Products/>
      {/* <BeforeAfter/> */}
-     <Testimonials/>
-     <Hero/>
+     <CustomerReviews/>
+     
      <Contact/>
     </>
   )
