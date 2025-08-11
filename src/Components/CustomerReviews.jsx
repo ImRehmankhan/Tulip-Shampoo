@@ -7,6 +7,32 @@ import { CartContext } from "../context/CartContext";
 
 export default function CustomerReviews() {
   const { reviewsData } = useContext(CartContext);
+  const averageRating = Math.round(
+    reviewsData.reduce((sum, review) => sum + review.rating, 0) /
+      reviewsData.length
+  );
+function getReviewStats(reviews) {
+  const total = reviews.length;
+  const stats = {
+    counts: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
+    percentages: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }
+  };
+
+  reviews.forEach((review) => {
+    if (stats.counts[review.rating] !== undefined) {
+      stats.counts[review.rating] += 1;
+    }
+  });
+
+  for (let star = 5; star >= 1; star--) {
+    stats.percentages[star] = total > 0 ? (stats.counts[star] / total) * 100 : 0;
+  }
+
+  return stats;
+}
+
+const reviewStats = getReviewStats(reviewsData);
+console.log(reviewStats);
 
   const [showWriteReview, setShowWriteReview] = useState(false);
   return (
@@ -22,46 +48,42 @@ export default function CustomerReviews() {
           {/* Column 1 - Average Rating */}
           <div className="flex flex-col   items-center">
             <div className="flex items-center gap-1 text-pink-600 text-xl">
-              {Array.from({ length: 5 }).map((_, i) => (
+              {Array.from({ length: averageRating }).map((_, i) => (
                 <FaStar key={i} />
               ))}
             </div>
             <p className="text-gray-800 text-lg font-semibold mt-2">
-              4.9 out of 5
+              {averageRating>0? averageRating : '0'} out of 5
             </p>
-            <p className="text-gray-500 text-sm">Based on 1,960 reviews</p>
+            <p className="text-gray-500 text-sm">
+              Based on {reviewsData.length} reviews
+            </p>
           </div>
 
           {/* Column 2 - Rating Bars */}
           <div className="space-y-2">
-            {[5, 4, 3, 2, 1].map((stars) => (
-              <div key={stars} className="flex items-center gap-3">
-                <div className="flex items-center gap-1 text-pink-600">
-                  {Array.from({ length: stars }).map((_, i) => (
-                    <>
-                      <FaStar key={i} className="text-sm" />
-                    </>
-                  ))}
-                </div>
-                <div className="w-full bg-gray-200 h-2 rounded">
-                  <div
-                    className="bg-pink-600 h-2 rounded"
-                    style={{
-                      width:
-                        stars === 5
-                          ? "80%"
-                          : stars === 4
-                          ? "15%"
-                          : stars === 3
-                          ? "3%"
-                          : "2%",
-                    }}
-                  ></div>
-                </div>
-                <p>{stars * 499}</p>
-              </div>
+      {[5, 4, 3, 2, 1].map((stars) => (
+        <div key={stars} className="flex items-center gap-3">
+          {/* Stars */}
+          <div className="flex items-center gap-1 text-pink-600">
+            {Array.from({ length: stars }).map((_, i) => (
+              <FaStar key={i} className="text-sm" />
             ))}
           </div>
+
+          {/* Progress bar */}
+          <div className="w-full bg-gray-200 h-2 rounded">
+            <div
+              className="bg-pink-600 h-2 rounded"
+              style={{ width: `${reviewStats.percentages[stars]}%` }}
+            ></div>
+          </div>
+
+          {/* Count or percentage */}
+          <p>{reviewStats.counts[stars]}</p>
+        </div>
+      ))}
+    </div>
 
           {/* Column 3 - Write Review Button */}
           <div className="flex justify-center md:justify-center">

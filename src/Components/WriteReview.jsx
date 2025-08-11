@@ -50,7 +50,7 @@ const WriteReview = () => {
               type="button"
               onClick={() => setRating(star)}
               className={`text-2xl ${
-                star <= rating ? "text-yellow-400" : "text-gray-300"
+                star <= rating ? "text-pink-600" : "text-gray-300"
               }`}
               aria-label={`${star} star`}
             >

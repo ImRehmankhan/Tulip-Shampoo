@@ -7,7 +7,7 @@ export default function Purchase() {
   const navigate = useNavigate();
   const videoRef = useRef(null);
 
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const togglePlay = () => {
     if (!videoRef.current) return;
 
@@ -37,7 +37,7 @@ export default function Purchase() {
               onClick={togglePlay}
               className="mt-4 px-4 py-2 bg-pink-600 text-white w-full item-center rounded-lg hover:bg-pink-700"
             >
-              {isPlaying ? "Pause Video" : "Play Video"}
+              {!isPlaying ? "Play Video": "Pause Video"  }
             </button>
             <span className="absolute top-4 left-4 bg-pink-600 text-white text-xs px-3 py-1 rounded-full shadow">
               Best Seller
