@@ -26,7 +26,7 @@ export default function Benefits() {
           Why Choose Tulip?
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-          Discover the natural difference — Tulip Herbal Shampoo blends premium
+          Discover the natural difference, Tulip Herbal Shampoo blends premium
           botanicals and modern haircare science for beautiful, healthy hair.
         </p>
 
