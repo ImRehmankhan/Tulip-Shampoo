@@ -1,9 +1,10 @@
 import React, { useState, useContext, useMemo } from "react";
 import { CartContext } from "../context/CartContext";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 export default function CheckoutPage() {
   const navigate = useNavigate();
-  const { cart,setCart } = useContext(CartContext); // Always use cart items
+  const { cart, setCart } = useContext(CartContext);
 
   const [form, setForm] = useState({
     email: "",
@@ -22,16 +23,30 @@ export default function CheckoutPage() {
     billingSame: true,
   });
 
+  const [promoCode, setPromoCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+
   const shipping = form.shippingMethod === "express" ? 249.0 : 0;
 
-  // Calculate subtotal from all cart items
+  // subtotal
   const subtotal = useMemo(
-    () =>
-      cart.reduce((total, item) => total + item.salePrice * item.quantity, 0),
+    () => cart.reduce((total, item) => total + item.salePrice * item.quantity, 0),
     [cart]
   );
 
-  const total = subtotal + shipping;
+  // apply promo
+  const handleApplyPromo = () => {
+    if (promoCode.trim().toLowerCase() === "kamalians") {
+      const discountAmount = subtotal * 0.1; // 10% discount
+      setDiscount(discountAmount);
+      alert("Promo code applied! 🎉 10% discount added.");
+    } else {
+      setDiscount(0);
+      alert("Invalid promo code ❌");
+    }
+  };
+
+  const total = subtotal + shipping - discount;
 
   const handleChange = (e) => {
     const { name, type, value, checked } = e.target;
@@ -41,21 +56,20 @@ export default function CheckoutPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const phoneNumber = "923185846471";
+
     const requiredFields = ["firstName", "lastName", "address", "city", "phone", "email"];
-  const missingFields = requiredFields.filter((field) => !form[field].trim());
+    const missingFields = requiredFields.filter((field) => !form[field].trim());
 
-  if (missingFields.length > 0) {
-    alert("Please fill in all required fields before completing the order.");
-    return;
-  }
+    if (missingFields.length > 0) {
+      alert("Please fill in all required fields before completing the order.");
+      return;
+    }
 
-    // Create product list for WhatsApp message
+    // product lines
     const productLines = cart
       .map(
         (item) =>
-          `🛍 ${item.name} — Qty: ${item.quantity} — Rs ${(
-            item.salePrice * item.quantity
-          ).toLocaleString()}`
+          `🛍 ${item.name} — Qty: ${item.quantity} — Rs ${(item.salePrice * item.quantity).toLocaleString()}`
       )
       .join("\n");
 
@@ -65,6 +79,7 @@ ${productLines}
 
 💰 Subtotal: Rs ${subtotal.toLocaleString()}
 🚚 Shipping: Rs ${shipping.toLocaleString()}
+🎟 Discount: Rs ${discount.toLocaleString()}
 📌 Total: Rs ${total.toLocaleString()}
 
 👤 Name: ${form.firstName} ${form.lastName}
@@ -74,10 +89,9 @@ ${productLines}
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
-navigate("/")
 
-   setCart(null)
-   
+    navigate("/");
+    setCart(null);
   };
 
   return (
@@ -116,11 +130,16 @@ navigate("/")
                 <span>Subtotal</span>
                 <span>Rs {subtotal.toLocaleString()}</span>
               </div>
-              <div className="text-sm text-gray-600 mb-3 flex justify-between">
+              <div className="text-sm text-gray-600 mb-1 flex justify-between">
                 <span>Shipping</span>
                 <span>Rs {shipping.toLocaleString()}</span>
               </div>
-
+              {discount > 0 && (
+                <div className="text-sm text-green-600 mb-1 flex justify-between">
+                  <span>Discount</span>
+                  <span>- Rs {discount.toLocaleString()}</span>
+                </div>
+              )}
               <div className="border-t pt-3 mt-3 flex justify-between items-baseline">
                 <div>
                   <div className="text-xs text-gray-500">PKR</div>
@@ -128,6 +147,24 @@ navigate("/")
                     Rs {total.toLocaleString()}
                   </div>
                 </div>
+              </div>
+
+              {/* Promo Code */}
+              <div className="mt-4">
+                <input
+                  type="text"
+                  placeholder="Enter promo code"
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                  className="w-full border border-gray-200 rounded-md px-3 py-2 mb-2"
+                />
+                <button
+                  type="button"
+                  onClick={handleApplyPromo}
+                  className="w-full bg-green-600 text-white py-2 rounded-md font-semibold hover:bg-green-700 transition"
+                >
+                  Apply Promo
+                </button>
               </div>
             </div>
           </aside>
@@ -204,7 +241,6 @@ navigate("/")
                 />
                 Standard — Rs 0 (Rawalpindi / Islamabad)
               </label>
-              
               <label className="block border p-3 rounded">
                 <input
                   type="radio"
